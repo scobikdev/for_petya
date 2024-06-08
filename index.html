@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шлепни попку</title>
+  <style>
+    #game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    #clicker-image {
+      max-width: 300px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    #clicker-image.clicked {
+      transform: scale(0.8);
+      animation: bounce 0.5s ease-in-out;
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: scale(0.8);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <img id="clicker-image" src="https://www.fonstola.ru/pic/202003/1600x1200/fonstola.ru_374763.jpg" alt="Кликер">
+    <p>ШЛЕПНИ ПОПКУ!</p>
+    <big>ЧТОБЫ УБРАТЬ ВОДЯНОЙ ЗНАК ОПЛАТИТЕ ТОВАР SCOBIK_DEV!</big>
+    <p>Счет: <span id="score">0</span></p>
+  </div>
+
+  <script>
+    const clickerImage = document.getElementById('clicker-image');
+    const scoreElement = document.getElementById('score');
+    let score = 0;
+
+    clickerImage.addEventListener('click', () => {
+      clickerImage.classList.add('clicked');
+      score++;
+      scoreElement.textContent = score;
+
+      setTimeout(() => {
+        clickerImage.classList.remove('clicked');
+      }, 500);
+    });
+  </script>
+</body>
+</html>
